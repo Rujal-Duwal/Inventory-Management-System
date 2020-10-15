@@ -8,7 +8,6 @@ const ProductItemsReducer = (state = INITIAL_STATE, action) => {
     console.log(action)
     switch (action.type) {
         case ADD_PRODUCT_ITEM:
-
             return {
                 ...state,
                 productItems: action.payload,

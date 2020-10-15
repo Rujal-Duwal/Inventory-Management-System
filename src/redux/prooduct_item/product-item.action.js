@@ -1,11 +1,12 @@
 import { ADD_PRODUCT_ITEM } from './product-item.types';
-import items from '../../server/product-items'
-
+import axios from 'axios'
 
 export const addItem = () => (dispatch) => {
-    console.log(ADD_PRODUCT_ITEM);
-    dispatch({
-        type: ADD_PRODUCT_ITEM,
-        payload: items,
+    axios.get('http://localhost:3004/product_items').then((res) => {
+        dispatch({
+            type: ADD_PRODUCT_ITEM,
+            payload: res.data,
+        })
     })
+
 }

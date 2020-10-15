@@ -48,13 +48,15 @@ const useStyles = makeStyles({
 function DenseTable({ setTotal, showproductDetail }) {
     var subtotal = 0
     const dispatch = useDispatch()
-    dispatch(addItem())
+    useEffect(() => { dispatch(addItem()) }, [])
+
     const productItems = useSelector(state => state.productItems.productItems)
-    const rows = productItems.map(item => {
+    const rows = productItems && productItems.map(item => {
         const total_amount = item.quantity * item.unit_price;
         subtotal = total_amount + subtotal;
         return { ...item, total_amount: total_amount }
     })
+
 
     const classes = useStyles();
     setTotal(subtotal)
@@ -71,8 +73,8 @@ function DenseTable({ setTotal, showproductDetail }) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
-                        <TableRow key={row.name} onClick={() => showproductDetail(row)}>
+                    {rows && rows.map((row) => (
+                        <TableRow key={row.name} onClick={() => showproductDetail(row)} hover>
                             <TableCell component="th" scope="row">
                                 {row.name}
                             </TableCell>
