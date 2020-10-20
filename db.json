@@ -1,34 +1,22 @@
 {
   "product_items": [
     {
+      "id": 1,
       "name": "Frozen",
       "unit_price": 15,
       "quantity": 5,
-      "action": true
+      "brand": "Hamro bakary",
+      "category": "food",
+      "exp_date": "2020/12/4"
     },
     {
-      "name": "Ice cream sandwich",
-      "unit_price": 10,
-      "quantity": 5,
-      "action": true
-    },
-    {
-      "name": "Eclair",
-      "unit_price": 15,
-      "quantity": 5,
-      "action": true
-    },
-    {
+      "id": 4,
       "name": "Cupcake",
       "unit_price": 15,
       "quantity": 5,
-      "action": true
-    },
-    {
-      "name": "Gingerbread",
-      "unit_price": 15,
-      "quantity": 5,
-      "action": true
+      "brand": "Hamro bakary",
+      "category": "food",
+      "exp_date": "2025/12/4"
     }
   ]
 }

@@ -57,7 +57,6 @@ export default function Sales() {
 
     function showproductDetail(product) {
         setProduct(product)
-        console.log(product);
     }
 
     return (
@@ -82,15 +81,15 @@ export default function Sales() {
                         <Grid item xs={4}>
                             <List className={classes.listItem}>
                                 <ListItem >
-                                    <ListItemText primary="Product Name:" secondary={product ? product.name : null} />
+                                    <ListItemText primary="Brand:" secondary={product ? product.brand : null} />
                                 </ListItem>
                                 <ListItem>
-                                    <ListItemText primary="Unit Price:" secondary={product ? product.unit_price : null} />
+                                    <ListItemText primary="Category:" secondary={product ? product.category : null} />
+                                </ListItem>
+                                <ListItem>
+                                    <ListItemText primary="Expiry Date:" secondary={product ? product.exp_date : null} />
                                 </ListItem>
                                 {/* <ListItem>
-                                    <ListItemText primary="Product Name:" secondary={product ? product.name : null} />
-                                </ListItem>
-                                <ListItem>
                                     <ListItemText primary="Product Name:" secondary={product ? product.name : null} />
                                 </ListItem> */}
                             </List>
