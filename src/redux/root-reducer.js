@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux'
+import ExpensesReducer from './expenses/expenses.reducer'
 
-import productItemsReducer from './prooduct_item/product-item.reducer'
+import ProductItemsReducer from './prooduct_item/product-item.reducer'
+
 
 export default combineReducers({
-    productItems: productItemsReducer
+    productItems: ProductItemsReducer,
+    expenses: ExpensesReducer
 })

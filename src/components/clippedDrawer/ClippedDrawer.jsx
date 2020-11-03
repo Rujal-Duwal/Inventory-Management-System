@@ -1,28 +1,29 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import {
+    Drawer,
+    AppBar,
+    CssBaseline,
+    Toolbar,
+    List,
+    Typography,
+    Divider,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+    Hidden
+} from '@material-ui/core';
+import {
+    Apple,
+    ShoppingCartTwoTone,
+    ShoppingBasketTwoTone,
+    PeopleAltTwoTone
+} from '@material-ui/icons';
 
-import Hidden from '@material-ui/core/Hidden';
-
-
-import AppleIcon from '@material-ui/icons/Apple';
-import ShoppingCartTwoToneIcon from '@material-ui/icons/ShoppingCartTwoTone';
-import ShoppingBasketTwoToneIcon from '@material-ui/icons/ShoppingBasketTwoTone';
-import PeopleAltTwoToneIcon from '@material-ui/icons/PeopleAltTwoTone';
 import Sales from '../../pages/Sales/sales';
 import Purchase from '../../pages/purchase/Purchase';
+import Expenses from '../../pages/expenses/expenses';
 
 const drawerWidth = 240;
 
@@ -57,7 +58,7 @@ function ClippedDrawer({ body, history }) {
             <CssBaseline />
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
-                    <AppleIcon className={classes.icon} />
+                    <Apple className={classes.icon} />
                     <Typography variant="h6" noWrap>
                         Inventory Management System
           </Typography>
@@ -76,7 +77,7 @@ function ClippedDrawer({ body, history }) {
                         <List>
                             {['Sales', 'Purchase'].map((text, index) => (
                                 <ListItem button key={text} onClick={() => { history.push(`${text.toLowerCase()}`) }}>
-                                    <ListItemIcon>{index % 2 === 0 ? <ShoppingCartTwoToneIcon /> : <ShoppingBasketTwoToneIcon />}</ListItemIcon>
+                                    <ListItemIcon>{index % 2 === 0 ? <ShoppingCartTwoTone /> : <ShoppingBasketTwoTone />}</ListItemIcon>
                                     <ListItemText primary={text} />
                                 </ListItem>
                             ))}
@@ -85,7 +86,7 @@ function ClippedDrawer({ body, history }) {
                         <List>
                             {['Customer', 'Suppliars', 'Expenses', 'Report', 'Users '].map((text, index) => (
                                 <ListItem button key={text} onClick={() => { history.push(`${text.toLowerCase()}`) }}>
-                                    <ListItemIcon>{index % 2 === 0 ? <PeopleAltTwoToneIcon /> : <ShoppingBasketTwoToneIcon />}</ListItemIcon>
+                                    <ListItemIcon>{index % 2 === 0 ? <PeopleAltTwoTone /> : <ShoppingBasketTwoTone />}</ListItemIcon>
                                     <ListItemText primary={text} />
                                 </ListItem>
                             ))}
@@ -102,6 +103,8 @@ function ClippedDrawer({ body, history }) {
 
                         case 'PURCHASE':
                             return (<Purchase />)
+                        case 'EXPENSES':
+                            return (<Expenses />)
                         default:
                             return
                     }

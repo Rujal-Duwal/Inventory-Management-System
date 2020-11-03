@@ -2,21 +2,50 @@
   "product_items": [
     {
       "id": 1,
-      "name": "Frozen",
+      "product_name": "Frozen",
       "unit_price": 15,
-      "quantity": 5,
-      "brand": "Hamro bakary",
+      "quantity": 4,
+      "brand": "Nepal Ice Cream",
       "category": "food",
       "exp_date": "2020/12/4"
     },
     {
-      "id": 4,
-      "name": "Cupcake",
-      "unit_price": 15,
-      "quantity": 5,
+      "id": 2,
+      "product_name": "Bread",
+      "unit_price": 20,
+      "quantity": 3,
       "brand": "Hamro bakary",
       "category": "food",
       "exp_date": "2025/12/4"
+    }
+  ],
+  "expenses": [
+    {
+      "id": 1,
+      "catagory": "Salery",
+      "cost": 10,
+      "date": "2020/11/13",
+      "amount": 20,
+      "bill_number": 3214,
+      "details": "further more detail"
+    },
+    {
+      "id": 2,
+      "catagory": "Salery",
+      "cost": 10,
+      "date": "2020/11/13",
+      "amount": 20,
+      "bill_number": 3214,
+      "details": "further more detail"
+    },
+    {
+      "id": 3,
+      "catagory": "Salery",
+      "cost": 10,
+      "date": "2020/11/13",
+      "amount": 20,
+      "bill_number": 3214,
+      "details": "further more detail"
     }
   ]
 }

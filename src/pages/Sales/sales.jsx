@@ -1,20 +1,23 @@
-import React, { useState } from 'react'
-
-import DenseTable from '../../components/dataTable/DenseTable';
-
+import React, { useState, useEffect } from 'react'
+import Moment from 'moment';
 import { Input, List, ListItem, ListItemText, TextField, Paper, Grid, Container, makeStyles } from '@material-ui/core';
+import { useSelector, useDispatch } from 'react-redux'
+
+import { getproductItems } from '../../redux/prooduct_item/product-item.selectors'
+import { DenseTable } from '../../components/table/table';
+import { addItem, removeItem } from '../../redux/prooduct_item/product-item.action'
+
 
 import './sales.scss'
 
+const tableHeadings = ["Product Name", "Unit Price", "Quantity", "Total Amount"]
+const tableColumn = ["product_name", "unit_price", "quantity"]
 
 const useStyles = makeStyles((theme) => ({
     root: {
-
         '& .MuiTextField-root': {
             margin: theme.spacing(1),
         },
-
-        // fontSize: 'smaller'
     },
 
     paper: {
@@ -31,9 +34,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
-
-
 export default function Sales() {
     const [totalvalue, setTotalvalue] = useState(0);
     const [otherCharges, setOtherCharges] = useState(10);
@@ -41,8 +41,11 @@ export default function Sales() {
     const [discountPercentage, setDiscountPercentage] = useState();
     const [grandTotal, setGrandTotal] = useState(0);
     const [product, setProduct] = useState();
-    const classes = useStyles();
 
+    const classes = useStyles();
+    const productItems = useSelector(getproductItems)
+    const dispatch = useDispatch()
+    useEffect(() => { dispatch(addItem()) }, [])
 
     function setTotal(total) {
         setTotalvalue(total)
@@ -59,13 +62,29 @@ export default function Sales() {
         setProduct(product)
     }
 
+
+    function removePurchase(id) {
+        dispatch(removeItem(id));
+    }
+
+
     return (
         <div className="sales">
             <form className={classes.root} noValidate autoComplete="off">
                 <Paper className={classes.paper} m={10}>
                     <TextField size="small" id="standard-basic" label="Name" />
-                    <TextField size="small" id="standard-basic" label="Date" />
+                    <TextField
+                        id="datetime-local"
+                        label="Date"
+                        type="date"
+                        defaultValue={Moment(new Date()).format('YYYY-MM-DD')}
+                        className={classes.textField}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
                     <TextField size="small" id="standard-basic" label="Status" />
+
                     <TextField size="small" id="standard-basic" label="Reference no." />
                 </Paper>
 
@@ -76,7 +95,7 @@ export default function Sales() {
                         {/* <TextField id="filled-basic" label="Filled" variant="filled" size="small" /> */}
                     </Container >
                     {/* <TextField label="Standard" /> */}
-                    <DenseTable setTotal={setTotal} showproductDetail={showproductDetail} />
+                    <DenseTable setTotal={setTotal} showproductDetail={showproductDetail} tableHeadings={tableHeadings} tableColumn={tableColumn} tableData={productItems} removeRow={removePurchase} />
                     <Grid container spacing={3}>
                         <Grid item xs={4}>
                             <List className={classes.listItem}>
@@ -110,7 +129,6 @@ export default function Sales() {
                                             type="number"
                                             size='small'
                                             name='other charges'
-                                            size="2"
                                             value={otherCharges}
                                             onChange={(e) => setOtherCharges(parseFloat(e.target.value))} />
                                     </Grid>

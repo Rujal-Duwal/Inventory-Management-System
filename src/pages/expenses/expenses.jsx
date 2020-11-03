@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import MaskedInput from 'react-text-mask';
-import { Input, List, ListItem, ListItemText, TextField, Paper, Grid, Container, makeStyles, Divider, IconButton, FormControl, InputLabel } from '@material-ui/core';
+import { Input, List, ListItem, ListItemText, TextField, Paper, Grid, Container, makeStyles, Divider, IconButton } from '@material-ui/core';
 import PersonAddTwoToneIcon from '@material-ui/icons/PersonAddTwoTone';
 import Moment from 'moment';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux'
 
-
+import { addexpenses, removeexpenses } from '../../redux/expenses/expenses.action'
 import { DenseTable } from '../../components/table/table';
-import './purchase.scss'
-import { getproductItems } from '../../redux/prooduct_item/product-item.selectors'
-import { addItem, removeItem } from '../../redux/prooduct_item/product-item.action'
-
-const tableHeadings = ["Product Name", "Unit Price", "Quantity", "Total Amount"]
-const tableColumn = ["product_name", "unit_price", "quantity"]
+import './expenses.scss'
+import { MaxHeightTextarea } from '../../components/textArea/textArea';
+import { BasicTextFields } from '../../components/textField/textField';
+import { getexpensess } from '../../redux/expenses/expenses.selector'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -48,8 +46,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 function TextMaskCustom(props) {
-
     const { inputRef, ...other } = props;
+
     return (
         <MaskedInput
             {...other}
@@ -67,22 +65,21 @@ TextMaskCustom.propTypes = {
     inputRef: PropTypes.func.isRequired,
 };
 
-export default function Purchase() {
+const tableHeadings = ["Category", "Cost", "Date", "Total Amount"]
+const tableColumn = ["catagory", "cost", "date"]
+
+export default function Expenses() {
     const [totalvalue, setTotalvalue] = useState(0);
     const [otherCharges, setOtherCharges] = useState(10);
     const [discount, setDiscount] = useState(0);
     const [discountPercentage, setDiscountPercentage] = useState();
     const [grandTotal, setGrandTotal] = useState(0);
     const [product, setProduct] = useState();
-    const [values, setValues] = React.useState({
-        textmask: '(1  )    -    ',
-        numberformat: '1320',
-    });
-
     const classes = useStyles();
-    const productItems = useSelector(getproductItems)
     const dispatch = useDispatch()
-    useEffect(() => { dispatch(addItem()) }, [])
+
+    useEffect(() => { dispatch(addexpenses()) }, [])
+    const expensesData = useSelector(getexpensess)
 
     function setTotal(total) {
         setTotalvalue(total)
@@ -99,50 +96,39 @@ export default function Purchase() {
         setProduct(product)
     }
 
-
-    function removePurchase(id) {
-        dispatch(removeItem(id));
+    function removeSales(id) {
+        dispatch(removeexpenses(id));
     }
 
-    const handleChange = (event) => {
-        setValues({
-            ...values,
-            [event.target.name]: event.target.value,
-        });
-    };
-
     return (
-        <div className="purchase">
+        <div className="expenses">
             <form className={classes.root} noValidate autoComplete="off">
                 <Paper className={classes.paper} m={10}>
-                    <div className="suppliar">
-                        <TextField type='search' size="small" id="standard-basic" label="Suppliar Name" required />
-                        <Divider className={classes.divider} orientation="vertical" />
-                        <IconButton color="primary" className={classes.iconButton} aria-label="directions">
-                            <PersonAddTwoToneIcon />
-                        </IconButton>
-                    </div>
-                    <TextField
-                        id="datetime-local"
-                        label="Date"
-                        type="date"
-                        defaultValue={Moment(new Date()).format('YYYY-MM-DD')}
-                        className={classes.textField}
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    />
-                    <FormControl>
-                        <InputLabel htmlFor="formatted-text-mask-input">VAT/PAN</InputLabel>
-                        <Input
-                            value={values.textmask}
-                            onChange={handleChange}
-                            name="textmask"
-                            id="formatted-text-mask-input"
-                            inputComponent={TextMaskCustom}
-                        />
-                    </FormControl>
-                    <TextField size="small" id="standard-basic" label="Bill no." type="number" />
+                    <Grid container spacing={3}>
+                        <Grid item xs={8}>
+                            <div className="category">
+                                <TextField type='search' size="small" id="standard-basic" label="Suppliar Name" required />
+                                <Divider className={classes.divider} orientation="vertical" />
+                                <IconButton color="primary" className={classes.iconButton} aria-label="directions">
+                                    <PersonAddTwoToneIcon />
+                                </IconButton>
+                            </div>
+                            <BasicTextFields type="number" label="Cost" size="small" />
+                            <TextField
+                                label="Date"
+                                type="date"
+                                defaultValue={Moment(new Date()).format('YYYY-MM-DD')}
+                                className={classes.textField}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+                            <TextField size="small" id="standard-basic" label="Bill no." type="number" />
+                        </Grid>
+                        <Grid item xs={4}>
+                            <MaxHeightTextarea />
+                        </Grid>
+                    </Grid>
                 </Paper>
 
                 <Paper>
@@ -159,7 +145,14 @@ export default function Purchase() {
                     </Container >
                     {/* <TextField label="Standard" /> */}
 
-                    <DenseTable setTotal={setTotal} showproductDetail={showproductDetail} tableHeadings={tableHeadings} tableColumn={tableColumn} tableData={productItems} removeRow={removePurchase} />
+                    <DenseTable
+                        setTotal={setTotal}
+                        showproductDetail={showproductDetail}
+                        tableData={expensesData}
+                        tableHeadings={tableHeadings}
+                        tableColumn={tableColumn}
+                        removeRow={removeSales}
+                    />
 
                     <Grid container spacing={3}>
                         <Grid item xs={4}>
