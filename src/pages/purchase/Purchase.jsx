@@ -1,6 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import MaskedInput from 'react-text-mask';
-import { Input, List, ListItem, ListItemText, TextField, Paper, Grid, Container, makeStyles, Divider, IconButton, FormControl, InputLabel } from '@material-ui/core';
+import {
+    Input,
+    List,
+    ListItem,
+    ListItemText,
+    TextField,
+    Paper,
+    Grid,
+    Container,
+    makeStyles,
+    Divider,
+    IconButton,
+    FormControl,
+    InputLabel
+} from '@material-ui/core';
 import PersonAddTwoToneIcon from '@material-ui/icons/PersonAddTwoTone';
 import Moment from 'moment';
 import PropTypes from 'prop-types';
@@ -23,13 +37,10 @@ const useStyles = makeStyles((theme) => ({
             margin: theme.spacing(1),
 
         },
-
-        // fontSize: 'smaller'
     },
 
     paper: {
         padding: theme.spacing(0),
-        // textAlign: 'center',
         color: theme.palette.text.secondary,
         marginBottom: 20,
         height: '100%',
@@ -99,7 +110,6 @@ export default function Purchase() {
         setProduct(product)
     }
 
-
     function removePurchase(id) {
         dispatch(removeItem(id));
     }
@@ -153,13 +163,16 @@ export default function Purchase() {
                             variant="outlined"
                             id="mui-theme-provider-outlined-input"
                         />
-                        {/* <label>Search </label> */}
-                        {/* <input name='search' type='search' value='' placeholder='' /> */}
-                        {/* <TextField id="filled-basic" label="Filled" variant="filled" size="small" /> */}
                     </Container >
-                    {/* <TextField label="Standard" /> */}
 
-                    <DenseTable setTotal={setTotal} showproductDetail={showproductDetail} tableHeadings={tableHeadings} tableColumn={tableColumn} tableData={productItems} removeRow={removePurchase} />
+                    <DenseTable
+                        setTotal={setTotal}
+                        showRowDetail={showproductDetail}
+                        tableHeadings={tableHeadings}
+                        tableColumn={tableColumn}
+                        tableData={productItems}
+                        removeRow={removePurchase}
+                    />
 
                     <Grid container spacing={3}>
                         <Grid item xs={4}>
@@ -173,9 +186,6 @@ export default function Purchase() {
                                 <ListItem>
                                     <ListItemText primary="Expiry Date:" secondary={product ? product.exp_date : null} />
                                 </ListItem>
-                                {/* <ListItem>
-                                <ListItemText primary="Product Name:" secondary={product ? product.name : null} />
-                            </ListItem> */}
                             </List>
                         </Grid>
                         <Grid item xs={4} />

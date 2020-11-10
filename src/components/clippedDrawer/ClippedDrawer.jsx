@@ -21,9 +21,14 @@ import {
     PeopleAltTwoTone
 } from '@material-ui/icons';
 
-import Sales from '../../pages/Sales/sales';
+import Sales from '../../pages/sales/sales';
 import Purchase from '../../pages/purchase/Purchase';
 import Expenses from '../../pages/expenses/expenses';
+import Suppliers from '../../pages/suppliers/suppliers';
+import Users from '../../pages/user/user';
+import Customers from '../../pages/customers/customers';
+import Products from '../../pages/products/products';
+
 
 const drawerWidth = 240;
 
@@ -84,7 +89,7 @@ function ClippedDrawer({ body, history }) {
                         </List>
                         <Divider />
                         <List>
-                            {['Customer', 'Suppliars', 'Expenses', 'Report', 'Users '].map((text, index) => (
+                            {['Customers', 'Suppliers', 'Products', 'Expenses', 'Report', 'Users'].map((text, index) => (
                                 <ListItem button key={text} onClick={() => { history.push(`${text.toLowerCase()}`) }}>
                                     <ListItemIcon>{index % 2 === 0 ? <PeopleAltTwoTone /> : <ShoppingBasketTwoTone />}</ListItemIcon>
                                     <ListItemText primary={text} />
@@ -100,11 +105,18 @@ function ClippedDrawer({ body, history }) {
                     switch (body) {
                         case 'SALES':
                             return (<Sales />);
-
                         case 'PURCHASE':
                             return (<Purchase />)
+                        case 'CUSTOMERS':
+                            return (<Customers />)
+                        case 'SUPPLIERS':
+                            return (<Suppliers />)
+                        case 'PRODUCTS':
+                            return (<Products />)
                         case 'EXPENSES':
                             return (<Expenses />)
+                        case 'USERS':
+                            return (<Users />)
                         default:
                             return
                     }

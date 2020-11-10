@@ -95,7 +95,14 @@ export default function Sales() {
                         {/* <TextField id="filled-basic" label="Filled" variant="filled" size="small" /> */}
                     </Container >
                     {/* <TextField label="Standard" /> */}
-                    <DenseTable setTotal={setTotal} showproductDetail={showproductDetail} tableHeadings={tableHeadings} tableColumn={tableColumn} tableData={productItems} removeRow={removePurchase} />
+                    <DenseTable
+                        setTotal={setTotal}
+                        showRowDetail={showproductDetail}
+                        tableHeadings={tableHeadings}
+                        tableColumn={tableColumn}
+                        tableData={productItems}
+                        removeRow={removePurchase}
+                    />
                     <Grid container spacing={3}>
                         <Grid item xs={4}>
                             <List className={classes.listItem}>
@@ -145,7 +152,13 @@ export default function Sales() {
                                             onChange={(e) => setDiscount((e.target.value) / 100 * totalvalue)} />
                                     </Grid>
                                     <Grid item xs={4}>
-                                        <Input type="number" size='small' name='other charges' value={discount.toFixed(2)} onChange={(e) => handleDiscountChange(e)} />
+                                        <Input
+                                            type="number"
+                                            size='small'
+                                            name='other charges'
+                                            value={discount.toFixed(2)}
+                                            onChange={(e) => handleDiscountChange(e)}
+                                        />
                                     </Grid>
                                     <Grid item xs={6}>
                                         <label>Grand Total</label>

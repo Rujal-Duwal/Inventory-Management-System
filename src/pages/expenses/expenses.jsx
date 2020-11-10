@@ -16,13 +16,10 @@ import { getexpensess } from '../../redux/expenses/expenses.selector'
 
 const useStyles = makeStyles((theme) => ({
     root: {
-
         '& .MuiTextField-root': {
             margin: theme.spacing(1),
 
         },
-
-        // fontSize: 'smaller'
     },
 
     paper: {
@@ -74,7 +71,7 @@ export default function Expenses() {
     const [discount, setDiscount] = useState(0);
     const [discountPercentage, setDiscountPercentage] = useState();
     const [grandTotal, setGrandTotal] = useState(0);
-    const [product, setProduct] = useState();
+    const [expensesDetail, setExpensesDetail] = useState();
     const classes = useStyles();
     const dispatch = useDispatch()
 
@@ -92,8 +89,8 @@ export default function Expenses() {
         setDiscountPercentage('')
     }
 
-    function showproductDetail(product) {
-        setProduct(product)
+    function showExpensesDetail(product) {
+        setExpensesDetail(product)
     }
 
     function removeSales(id) {
@@ -147,7 +144,7 @@ export default function Expenses() {
 
                     <DenseTable
                         setTotal={setTotal}
-                        showproductDetail={showproductDetail}
+                        showRowDetail={showExpensesDetail}
                         tableData={expensesData}
                         tableHeadings={tableHeadings}
                         tableColumn={tableColumn}
@@ -158,17 +155,11 @@ export default function Expenses() {
                         <Grid item xs={4}>
                             <List className={classes.listItem}>
                                 <ListItem >
-                                    <ListItemText primary="Brand:" secondary={product ? product.brand : null} />
+                                    <ListItemText primary="Bill No:" secondary={expensesDetail ? expensesDetail.bill_number : null} />
                                 </ListItem>
                                 <ListItem>
-                                    <ListItemText primary="Category:" secondary={product ? product.category : null} />
+                                    <ListItemText primary="Details:" secondary={expensesDetail ? expensesDetail.details : null} />
                                 </ListItem>
-                                <ListItem>
-                                    <ListItemText primary="Expiry Date:" secondary={product ? product.exp_date : null} />
-                                </ListItem>
-                                {/* <ListItem>
-                                <ListItemText primary="Product Name:" secondary={product ? product.name : null} />
-                            </ListItem> */}
                             </List>
                         </Grid>
                         <Grid item xs={4} />
