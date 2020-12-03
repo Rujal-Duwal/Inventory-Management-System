@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { FormControl, InputLabel, Input, Toolbar, Button, Box,Paper } from '@material-ui/core';
 import { useDispatch } from 'react-redux'
 
-import { addSuppliers } from '../../redux/suppliers/suppliers.action'
+import {addSuppliers} from "../../redux/suppliers/suppliers.action";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -40,6 +40,10 @@ export default function AddSuppliers() {
     const [values, setValues] = useState(initialFValues)
     const dispatch = useDispatch()
 
+    const submitAddSupplier=(values) =>{
+        dispatch(addSuppliers(values))
+    }
+
     const handleInputChange = e => {
         console.log(e.target);
         const { id, value } = e.target
@@ -59,7 +63,8 @@ export default function AddSuppliers() {
             }
         })
     }
-    console.log(values);
+
+
     return (
         <div className='addSuppliers'>
             <Paper>
@@ -123,7 +128,7 @@ export default function AddSuppliers() {
                         <Input onChange={handleInputChangeInOwner} values={values.owner.email} id="email" />
                     </FormControl>
                     <Box display="flex" justifyContent="flex-end">
-                        <Button color='primary' variant="contained" onClick={() => dispatch(addSuppliers(values))}>Submit</Button>
+                        <Button href="/suppliers" color='primary' variant="contained" onClick={()=>submitAddSupplier(values)}>Submit</Button>
                     </Box>
                 </form>
             </Paper>

@@ -148,8 +148,6 @@
       "ownerEmail": "czar69@live.com",
       "id": 13
     },
-
-
     {
       "companyName": "Namaste Digital Nepal",
       "phoneNumber": "9861488000",
@@ -170,92 +168,36 @@
       "id": 16
     }
   ],
-  "products": [
-    {
-      "id": 1,
-      "product_name": "yolk",
-      "rate": 15,
-      "quantity": 4,
-      "brand": "Nepal Ice Cream",
-      "category": "food",
-      "batch_no": 4322,
-      "expd": "2020/12/4",
-      "mfd": "2020/1/10"
-    },
-    {
-      "id": 2,
-      "product_name": "chicken",
-      "rate": 15,
-      "quantity": 4,
-      "brand": "Nepal Ice Cream",
-      "category": "food",
-      "batch_no": 4322,
-      "expd": "2020/12/4",
-      "mfd": "2020/1/10"
-    }
-  ],
-  "users": [
-    {
-      "id": 0,
-      "name": "Joe James",
-      "designation": "Sales",
-      "contact_details": "9861468965",
-      "username": "joesales"
-    },
-    {
-      "id": 1,
-      "name": "John Walsh",
-      "designation": "Admin",
-      "contact_details": "01-6635796",
-      "username": "johnadmin"
-    },
-    {
-      "id": 2,
-      "name": "Bob Herm",
-      "designation": "Owner",
-      "contact_details": "9849939333",
-      "username": "bobowner"
-    },
-    {
-      "id": 3,
-      "name": "James Houston",
-      "designation": "Owner",
-      "contact_details": "9475937263",
-      "username": "jamesowner"
-    }
-  ],
   "customers": [
     {
-      "id": 0,
-      "name": "Ram Gopal Yadav",
-      "category": "Factory",
-      "contact_numbers": "9801233784,01-6612121",
-      "credit_amount": 3999,
-      "information": "some info about Supppliers"
+      "name": "Rujal Duwal",
+      "contactNumber": "9861488000",
+      "address": "Bhaktapur",
+      "retailerCode": "",
+      "category": "",
+      "VATorPANNumber": "",
+      "owner": {
+        "name": "",
+        "contactNumber": "",
+        "address": "",
+        "email": ""
+      },
+      "id": 1
     },
     {
-      "id": 1,
-      "name": "Hari Gopal Yadav",
-      "category": "Factory",
-      "contact_numbers": "9801233784,01-6612121",
-      "credit_amount": 3999,
-      "information": "some info about Supppliers"
-    },
-    {
-      "id": 2,
-      "name": "Ram Varan Yadav",
-      "category": "Factory",
-      "contact_numbers": "9801233784,01-6612121",
-      "credit_amount": 3999,
-      "information": "some info about Supppliers"
-    },
-    {
-      "id": 3,
-      "name": "Rajesh Hamal",
-      "category": "Factory",
-      "contact_numbers": "9801233784,01-6612121",
-      "credit_amount": 3999,
-      "information": "some info about Supppliers"
+      "name": "Rujal Duwal",
+      "contactNumber": "9861488000",
+      "address": "Bhaktapur",
+      "retailerCode": "",
+      "category": "Great",
+      "VATorPANNumber": "",
+      "owner": {
+        "name": "",
+        "contactNumber": "",
+        "address": "",
+        "email": ""
+      },
+      "id": 2
     }
   ]
 }

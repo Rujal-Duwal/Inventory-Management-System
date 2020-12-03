@@ -31,6 +31,7 @@ import Customers from '../../pages/customers/customers';
 import Products from '../../pages/products/products';
 import AddSuppliers from '../../pages/suppliers/addSuppliers';
 import Pos from '../../pages/pos/postouch';
+import AddCustomer from "../../pages/customers/AddCustomer";
 
 
 const drawerWidth = 240;
@@ -67,9 +68,8 @@ function ClippedDrawer({ body, history }) {
     const [open, setOpen] = React.useState(true);
 
     const handleClick = (title) => {
-    console.log(title)
         show=title
-setOpen(!open)
+        setOpen(!open)
     };
 
     return (
@@ -107,7 +107,6 @@ setOpen(!open)
                                 <>
                                     <ListItem button key={text} onClick={() => { history.push(`${text.toLowerCase()}`) }}>
                                         <ListItemIcon>{index % 2 === 0 ? <PeopleAltTwoTone /> : <ShoppingBasketTwoTone />}</ListItemIcon>
-
                                         <ListItemText primary={text} onClick={()=>handleClick(text)} />
                                     </ListItem>
                                     {console.log(show)}
@@ -125,7 +124,7 @@ setOpen(!open)
                 </Drawer>
             </Hidden>
             <main className={classes.content}>
-                <Toolbar />
+                <Toolbar style={{    minHeight: 44 }}/>
                 {(() => {
                     switch (body) {
                         case 'POS':
@@ -136,6 +135,8 @@ setOpen(!open)
                             return (<Purchase />)
                         case 'CUSTOMERS':
                             return (<Customers />)
+                        case 'ADD_CUSTOMER':
+                            return (<AddCustomer />)
                         case 'SUPPLIERS':
                             return (<Suppliers />)
                         case 'ADD_SUPPLIERS':

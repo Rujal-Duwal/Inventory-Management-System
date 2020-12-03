@@ -1,4 +1,4 @@
-import { GET_CUSTOMERS } from './customers.types';
+import { GET_CUSTOMERS, ADD_CUSTOMER } from './customers.types';
 import axios from 'axios'
 
 export const getCustomers = () => (dispatch) => {
@@ -8,5 +8,13 @@ export const getCustomers = () => (dispatch) => {
             payload: res.data,
         })
     })
+}
 
+export const addCustomer = (customer) => (dispatch) => {
+    axios.post('/customers', customer).then(res => {
+        dispatch({
+            type: ADD_CUSTOMER,
+            payload: res.data
+        })
+    })
 }

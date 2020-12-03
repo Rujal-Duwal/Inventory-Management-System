@@ -40,6 +40,9 @@ function App() {
         <Route exact path="/customers">
           <ClippedDrawer body='CUSTOMERS' />
         </Route>
+        <Route exact path="/add-customers">
+          <ClippedDrawer body='ADD_CUSTOMER' />
+        </Route>
       </Switch>
     </div>
   );

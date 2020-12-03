@@ -5,10 +5,18 @@ const options = {
     filterType: "textField",
 };
 
+function camelCase(str) {
+    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index)
+    {
+        return index ===0 ? word.toLowerCase() : word.toUpperCase();
+    }).replace(/\s+/g, '');
+}
+
 export default function MuiDataTable({ tableHeadings, tableData }) {
     const columns = tableHeadings.map(column =>
-        ({ name: column.replace(/\s+/g, '_').toLowerCase(), label: column })
+        ({ name: camelCase(column), label: column })
     )
+    console.log(camelCase("Hello world"))
     return (
         <MUIDataTable
             title={"Employee List"}

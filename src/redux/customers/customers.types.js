@@ -1,3 +1,2 @@
 export const GET_CUSTOMERS = 'GET_CUSTOMERS';
-
-
+export const ADD_CUSTOMER = 'ADD_CUSTOMER';

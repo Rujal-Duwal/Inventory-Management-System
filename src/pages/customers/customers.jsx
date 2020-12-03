@@ -7,7 +7,7 @@ import { getCustomers } from '../../redux/customers/customers.action'
 import { customersSelector } from '../../redux/customers/customers.selectors'
 
 
-const tableHeadings = ["Name", "Category", "Contact Numbers", "Credit Amount", "Information"]
+const tableHeadings = ["Name", "Category", "Contact Number", "Credit Amount", "Information"]
 
 
 export default function Customers() {
@@ -17,8 +17,6 @@ export default function Customers() {
 
     return (
         <div className='suppliers'>
-            <Button color='primary' variant="contained">Add Customer</Button>
-            <Button color='secondary' variant="contained">Import</Button>
             <MuiDataTable tableHeadings={tableHeadings} tableData={customers} />
         </div>
     )
