@@ -50,36 +50,124 @@
   ],
   "suppliers": [
     {
-      "id": 0,
-      "name": "Ram Gopal Yadav",
+      "companyName": "Dai ko Pasal",
+      "phoneNumber": "01-6612121",
+      "mobileNumber": "",
+      "address": "",
+      "email": "",
+      "additionalInformation": "some info about Supppliers",
+      "supplierCode": "",
       "category": "Factory",
-      "contact_numbers": "9801233784,01-6612121",
-      "credit_amount": 3999,
-      "information": "some info about Supppliers"
+      "credit": "",
+      "vatNumber": "",
+      "owner": {
+        "name": "Ram Varan Yadav",
+        "mobileNumber": "9801233784",
+        "address": "",
+        "email": ""
+      },
+      "id": 10
     },
     {
-      "id": 1,
-      "name": "Hari Gopal Yadav",
+      "companyName": "Home sweets",
+      "contact": "01-6612121",
+      "address": "D",
+      "email": "D",
+      "additionalInformation": "some info about Supppliers",
+      "supplierCode": "",
       "category": "Factory",
-      "contact_numbers": "9801233784,01-6612121",
-      "credit_amount": 3999,
-      "information": "some info about Supppliers"
+      "credit": "",
+      "vatNumber": "",
+      "owner": {
+        "name": "Rajesh Hamal",
+        "mobileNumber": "9801233784",
+        "address": "",
+        "email": ""
+      },
+      "id": 8
     },
     {
-      "id": 2,
-      "name": "Ram Varan Yadav",
-      "category": "Factory",
-      "contact_numbers": "9801233784,01-6612121",
-      "credit_amount": 3999,
-      "information": "some info about Supppliers"
+      "companyName": "Namaste Digital Nepal",
+      "phoneNumber": "9861488000",
+      "mobileNumber": "",
+      "address": "Bhaktapur",
+      "email": "czar69@live.com",
+      "additionalInformation": "",
+      "supplierCode": "",
+      "category": "",
+      "credit": "",
+      "vatNumber": "",
+      "owner": {
+        "name": "Dipjyol",
+        "mobileNumber": "",
+        "address": "",
+        "email": ""
+      },
+      "id": 9
     },
     {
-      "id": 3,
-      "name": "Rajesh Hamal",
-      "category": "Factory",
-      "contact_numbers": "9801233784,01-6612121",
-      "credit_amount": 3999,
-      "information": "some info about Supppliers"
+      "companyName": "Namaste Digital Nepal2",
+      "phoneNumber": "9861488000",
+      "mobileNumber": "",
+      "address": "Bhaktapur",
+      "email": "czar69@live.com",
+      "additionalInformation": "",
+      "supplierCode": "",
+      "category": "",
+      "VATorPANNumber": "",
+      "owner": {
+        "phoneNumber": "",
+        "name": "",
+        "mobileNumber": "",
+        "address": "",
+        "email": ""
+      },
+      "id": 11
+    },
+    {
+      "companyName": "Namaste Digital Nepal",
+      "phoneNumber": "9861488000",
+      "mobileNumber": "",
+      "address": "Bhaktapur",
+      "email": "czar69@live.com",
+      "additionalInformation": "",
+      "supplierCode": "",
+      "category": "",
+      "VATorPANNumber": "",
+      "owner": {
+        "phoneNumber": "",
+        "name": "",
+        "mobileNumber": "",
+        "address": "",
+        "email": ""
+      },
+      "ownerName": "Amir",
+      "ownerPhoneNumber": "9861488000",
+      "ownerMobileNumber": "9861488000",
+      "ownerAddress": "Bhaktapur",
+      "ownerEmail": "czar69@live.com",
+      "id": 13
+    },
+
+
+    {
+      "companyName": "Namaste Digital Nepal",
+      "phoneNumber": "9861488000",
+      "mobileNumber": "",
+      "address": "Bhaktapur",
+      "email": "czar69@live.com",
+      "additionalInformation": "",
+      "supplierCode": "",
+      "category": "",
+      "VATorPANNumber": "",
+      "owner": {
+        "phoneNumber": "4235432",
+        "name": "Rujal Duwal",
+        "mobileNumber": "5432",
+        "address": "5432",
+        "email": "5432"
+      },
+      "id": 16
     }
   ],
   "products": [

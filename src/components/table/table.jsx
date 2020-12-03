@@ -30,15 +30,29 @@ const useStyles = makeStyles({
     }
 });
 
-export const DenseTable = ({ setTotal, showRowDetail, tableHeadings, tableColumn, tableData, removeRow }) => {
-    var subtotal = 0
-    var rows
-    var total_amount
 
-    rows = tableData && tableData.map(item => {
-        item.amount ?
-            total_amount = item.amount :
-            total_amount = item.quantity * item.unit_price
+/**
+ *
+ * @param setTotal
+ * @param showRowDetail
+ * @param tableHeadings
+ * @param tableColumn
+ * @param tableData
+ * @param removeRow
+ * @returns {*}
+ * @constructor
+ */
+export const DenseTable = ({ setTotal, showRowDetail, tableHeadings, tableColumn, tableData, removeRow }) => {
+    let subtotal = 0
+
+    let total_amount
+
+
+    const rows = tableData && tableData.map(item => {
+        // item.amount ?
+        //     total_amount = item.amount :
+        //     total_amount = item.quantity * item.unit_price
+        total_amount = item.amount ? item.amount : item.quantity * item.unit_price
         subtotal = total_amount + subtotal
         return { ...item, total_amount: total_amount }
     })
@@ -77,6 +91,7 @@ export const DenseTable = ({ setTotal, showRowDetail, tableHeadings, tableColumn
 /************************* */
 
 // style for CollapsibleTable
+
 const useRowStyles = makeStyles({
     root: {
         '& > *': {
@@ -85,26 +100,23 @@ const useRowStyles = makeStyles({
     },
 });
 
+/**
+ *
+ * @param supplier
+ * @param supplier.companyName - The name of company on the supplier
+ * @param supplier.category
+ * @param supplier.phoneNumber
+ * @param supplier.email
+ * @param supplier.credit
+ * @param supplier.information
+ * @param supplier.owner
+ * @returns {*}
+ * @constructor
+ */
 
-function createData({ name, catagory, contact_number, credit_amount, information }) {
-    return {
-        name,
-        catagory,
-        contact_number,
-        credit_amount,
-        information,
-        history: [
-            { date: '2020-01-05', customerId: '11091700', amount: 3 },
-            { date: '2020-01-02', customerId: 'Anonymous', amount: 1 },
-        ],
-    };
-}
-
-function Row(props) {
-    const { row } = props;
+function Row({ supplier }) {
     const [open, setOpen] = React.useState(false);
     const classes = useRowStyles();
-
     return (
         <React.Fragment>
             <TableRow className={classes.root}>
@@ -114,20 +126,18 @@ function Row(props) {
                     </IconButton>
                 </TableCell>
                 <TableCell component="th" scope="row">
-                    {row.name}
+                    {supplier.companyName}
                 </TableCell>
-                <TableCell align="right">{row.catagory}</TableCell>
-                <TableCell align="right">{row.contact_number}</TableCell>
-                <TableCell align="right">{row.credit_amount}</TableCell>
-                <TableCell align="right">{row.information}</TableCell>
+                <TableCell align="right">{supplier.category}</TableCell>
+                <TableCell align="right">{supplier.phoneNumber}<br/>{supplier.email}</TableCell>
+                <TableCell align="right">{supplier.credit}</TableCell>
+                <TableCell align="right">{supplier.information}</TableCell>
             </TableRow>
             <TableRow>
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box margin={1}>
-                            <Typography variant="h6" gutterBottom component="div">
-                                History
-              </Typography>
+                            <Typography variant="h6" gutterBottom component="div">Owner info</Typography>
                             <Table size="small" aria-label="purchases">
                                 <TableHead>
                                     <TableRow>
@@ -138,18 +148,16 @@ function Row(props) {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {row.history.map((historyRow) => (
-                                        <TableRow key={historyRow.date}>
+                                    {console.log({supplier})}
+                                        <TableRow key={supplier.owner && supplier.owner.name}>
                                             <TableCell component="th" scope="row">
-                                                {historyRow.date}
+                                                {supplier.owner &&supplier.owner.name}
                                             </TableCell>
-                                            <TableCell>{historyRow.customerId}</TableCell>
-                                            <TableCell align="right">{historyRow.amount}</TableCell>
+                                            <TableCell>{supplier.owner &&supplier.owner.mobileNumber}</TableCell>
+                                            <TableCell align="right">{supplier.owner &&supplier.owner.address}</TableCell>
                                             <TableCell align="right">
-                                                {Math.round(historyRow.amount * row.price * 100) / 100}
                                             </TableCell>
                                         </TableRow>
-                                    ))}
                                 </TableBody>
                             </Table>
                         </Box>
@@ -160,36 +168,16 @@ function Row(props) {
     );
 }
 
-// Row.propTypes = {
-//     row: PropTypes.shape({
-//         calories: PropTypes.number.isRequired,
-//         carbs: PropTypes.number.isRequired,
-//         fat: PropTypes.number.isRequired,
-//         history: PropTypes.arrayOf(
-//             PropTypes.shape({
-//                 amount: PropTypes.number.isRequired,
-//                 customerId: PropTypes.string.isRequired,
-//                 date: PropTypes.string.isRequired,
-//             }),
-//         ).isRequired,
-//         name: PropTypes.string.isRequired,
-//         price: PropTypes.number.isRequired,
-//         protein: PropTypes.number.isRequired,
-//     }).isRequired,
-// };
-
-// const rows = [
-//     createData('Frozen yoghurt', 159, 6.0, 24, 4.0, 3.99),
-//     createData('Ice cream sandwich', 237, 9.0, 37, 4.3, 4.99),
-//     createData('Eclair', 262, 16.0, 24, 6.0, 3.79),
-//     createData('Cupcake', 305, 3.7, 67, 4.3, 2.5),
-//     createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
-// ];
+/**
+ *
+ * @param tableHeadings
+ * @param tableData
+ * @returns {*}
+ * @constructor
+ */
 
 export function CollapsibleTable({ tableHeadings, tableData }) {
-    var rows
-    rows = tableData && tableData.map(supplier => createData(supplier))
-    // console.log(rows);
+    const rows = tableData && tableData
 
     return (
         <TableContainer component={Paper}>
@@ -203,7 +191,7 @@ export function CollapsibleTable({ tableHeadings, tableData }) {
                 </TableHead>
                 <TableBody>
                     {rows && rows.map((row) => (
-                        <Row key={row.name} row={row} />
+                        <Row key={row.name} supplier={row} />
                     ))}
                 </TableBody>
             </Table>

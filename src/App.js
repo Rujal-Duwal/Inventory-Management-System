@@ -1,13 +1,21 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom'
+import BillPrint from './components/bill/BillPrint';
 
 import ClippedDrawer from './components/clippedDrawer/ClippedDrawer';
+import Pos from './pages/pos/Pos';
 
 
 function App() {
   return (
     <div className="App">
       <Switch>
+        <Route exact path={"/pos"}>
+          <Pos />
+        </Route>
+        <Route exact path={"/posBill"}>
+          <BillPrint />
+        </Route>
         <Route exact path={["/sales", "/"]}>
           <ClippedDrawer body='SALES' />
         </Route>
@@ -16,6 +24,9 @@ function App() {
         </Route>
         <Route exact path="/suppliers">
           <ClippedDrawer body='SUPPLIERS' />
+        </Route>
+        <Route exact path="/add-suppliers">
+          <ClippedDrawer body='ADD_SUPPLIERS' />
         </Route>
         <Route exact path="/products">
           <ClippedDrawer body='PRODUCTS' />

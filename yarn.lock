@@ -9926,7 +9926,7 @@ react-text-mask@^5.4.3:
   dependencies:
     prop-types "^15.5.6"
 
-react-to-print@^2.8.0:
+react-to-print@^2.11.0, react-to-print@^2.8.0:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/react-to-print/-/react-to-print-2.11.0.tgz#2f21af1b79673c387272428413ee253d8411835a"
   integrity sha512-Ctim5HjBdAj87cvjdIp1L5W9OZgdbcnZNSrwGQ4MqZYCgI4X/FPDJFM3omI+vC+jrWiPjZ+iJ+Elswbjyui9Ug==

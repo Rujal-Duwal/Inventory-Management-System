@@ -12,7 +12,8 @@ import {
     ListItem,
     ListItemIcon,
     ListItemText,
-    Hidden
+    Hidden,
+    Collapse
 } from '@material-ui/core';
 import {
     Apple,
@@ -28,6 +29,8 @@ import Suppliers from '../../pages/suppliers/suppliers';
 import Users from '../../pages/user/user';
 import Customers from '../../pages/customers/customers';
 import Products from '../../pages/products/products';
+import AddSuppliers from '../../pages/suppliers/addSuppliers';
+import Pos from '../../pages/pos/postouch';
 
 
 const drawerWidth = 240;
@@ -53,10 +56,21 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         padding: theme.spacing(3),
     },
+    nested: {
+        paddingLeft: theme.spacing(4),
+    },
 }));
 
+let show
 function ClippedDrawer({ body, history }) {
     const classes = useStyles();
+    const [open, setOpen] = React.useState(true);
+
+    const handleClick = (title) => {
+    console.log(title)
+        show=title
+setOpen(!open)
+    };
 
     return (
         <div className={classes.root}>
@@ -66,7 +80,7 @@ function ClippedDrawer({ body, history }) {
                     <Apple className={classes.icon} />
                     <Typography variant="h6" noWrap>
                         Inventory Management System
-          </Typography>
+                    </Typography>
                 </Toolbar>
             </AppBar>
             <Hidden smDown>
@@ -80,7 +94,7 @@ function ClippedDrawer({ body, history }) {
                     <Toolbar />
                     <div className={classes.drawerContainer}>
                         <List>
-                            {['Sales', 'Purchase'].map((text, index) => (
+                            {['POS', 'Sales', 'Purchase'].map((text, index) => (
                                 <ListItem button key={text} onClick={() => { history.push(`${text.toLowerCase()}`) }}>
                                     <ListItemIcon>{index % 2 === 0 ? <ShoppingCartTwoTone /> : <ShoppingBasketTwoTone />}</ListItemIcon>
                                     <ListItemText primary={text} />
@@ -90,10 +104,21 @@ function ClippedDrawer({ body, history }) {
                         <Divider />
                         <List>
                             {['Customers', 'Suppliers', 'Products', 'Expenses', 'Report', 'Users'].map((text, index) => (
-                                <ListItem button key={text} onClick={() => { history.push(`${text.toLowerCase()}`) }}>
-                                    <ListItemIcon>{index % 2 === 0 ? <PeopleAltTwoTone /> : <ShoppingBasketTwoTone />}</ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItem>
+                                <>
+                                    <ListItem button key={text} onClick={() => { history.push(`${text.toLowerCase()}`) }}>
+                                        <ListItemIcon>{index % 2 === 0 ? <PeopleAltTwoTone /> : <ShoppingBasketTwoTone />}</ListItemIcon>
+
+                                        <ListItemText primary={text} onClick={()=>handleClick(text)} />
+                                    </ListItem>
+                                    {console.log(show)}
+                                    <Collapse  in={show===text} timeout="auto" unmountOnExit addEndListener={0}>
+                                        <List component="div" disablePadding>
+                                            <ListItem button className={classes.nested}>
+                                                <ListItemText primary={`Add ${text}`} key={`Add ${text}`} onClick={()=>{history.push(`add-${text.toLowerCase()}`)}}/>
+                                            </ListItem>
+                                        </List>
+                                    </Collapse>
+                                </>
                             ))}
                         </List>
                     </div>
@@ -103,6 +128,8 @@ function ClippedDrawer({ body, history }) {
                 <Toolbar />
                 {(() => {
                     switch (body) {
+                        case 'POS':
+                            return (<Pos />);
                         case 'SALES':
                             return (<Sales />);
                         case 'PURCHASE':
@@ -111,6 +138,8 @@ function ClippedDrawer({ body, history }) {
                             return (<Customers />)
                         case 'SUPPLIERS':
                             return (<Suppliers />)
+                        case 'ADD_SUPPLIERS':
+                            return (<AddSuppliers />)
                         case 'PRODUCTS':
                             return (<Products />)
                         case 'EXPENSES':

@@ -18,7 +18,7 @@ export default function Customers() {
     return (
         <div className='suppliers'>
             <Button color='primary' variant="contained">Add Customer</Button>
-            <Button color='primary' variant="contained">Import</Button>
+            <Button color='secondary' variant="contained">Import</Button>
             <MuiDataTable tableHeadings={tableHeadings} tableData={customers} />
         </div>
     )
