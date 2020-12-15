@@ -11,7 +11,7 @@ import { addItem, removeItem } from '../../redux/prooduct_item/product-item.acti
 import './sales.scss'
 
 const tableHeadings = ["Product Name", "Unit Price", "Quantity", "Total Amount"]
-const tableColumn = ["product_name", "unit_price", "quantity"]
+const tableColumn = ["name", "unit_price", "quantity"]
 
 const useStyles = makeStyles((theme) => ({
     root: {

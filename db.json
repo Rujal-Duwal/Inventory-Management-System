@@ -2,8 +2,8 @@
   "product_items": [
     {
       "id": 1,
-      "product_name": "yolk",
-      "unit_price": 15,
+      "name": "yolk",
+      "unitPrice": 15,
       "quantity": 4,
       "brand": "Nepal Ice Cream",
       "category": "food",
@@ -11,8 +11,8 @@
     },
     {
       "id": 2,
-      "product_name": "chicken",
-      "unit_price": 15,
+      "name": "chicken",
+      "unitPrice": 15,
       "quantity": 4,
       "brand": "Nepal Ice Cream",
       "category": "food",

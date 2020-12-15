@@ -7,20 +7,27 @@ import { getProducts } from '../../redux/products/products.action'
 import { productsSelector } from '../../redux/products/products.selectors'
 
 
-const tableHeadings = ["Product Name", "Quantity", "Rate", "Amount", "Category", "MFD", "ExpD"]
+const tableHeadings = ["Name", "Quantity", "Unit Price", "Amount", "Category", "MFD", "ExpD"]
 
 
+/**
+ *
+ * @returns {*}
+ * @constructor
+ */
 export default function Products() {
     const dispatch = useDispatch()
     useEffect(() => { dispatch(getProducts()) }, [])
+
     const products = useSelector(productsSelector).map((product) => {
-        const amount = product.rate * product.quantity
+        console.log(product)
+        const amount = product.unitPrice * product.quantity
         return ({ ...product, amount })
     })
-    console.log(products);
+
     return (
         <div className='suppliers'>
-            <Button color='primary' variant="contained">Add Product</Button>
+            <Button color='primary' href="add-products" variant="contained">Add Product</Button>
             <Button color='primary' variant="contained">Import</Button>
             <MuiDataTable tableHeadings={tableHeadings} tableData={products} />
         </div>

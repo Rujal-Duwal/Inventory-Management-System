@@ -31,6 +31,9 @@ function App() {
         <Route exact path="/products">
           <ClippedDrawer body='PRODUCTS' />
         </Route>
+        <Route exact path="/add-Products">
+          <ClippedDrawer body='ADD_PRODUCT' />
+        </Route>
         <Route exact path="/expenses">
           <ClippedDrawer body='EXPENSES' />
         </Route>

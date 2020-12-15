@@ -16,6 +16,8 @@ export const useStyles = makeStyles((theme) => ({
         '& label': {
             top: -6
         },
+        /**/
+
         '& .MuiAppBar-root': {
             '& .MuiIconButton-root': {
                 padding: 0

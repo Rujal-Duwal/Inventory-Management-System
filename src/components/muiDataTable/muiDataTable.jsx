@@ -12,11 +12,11 @@ function camelCase(str) {
     }).replace(/\s+/g, '');
 }
 
-export default function MuiDataTable({ tableHeadings, tableData }) {
+function MuiDataTable({ tableHeadings, tableData }) {
     const columns = tableHeadings.map(column =>
         ({ name: camelCase(column), label: column })
     )
-    console.log(camelCase("Hello world"))
+    console.log(tableData)
     return (
         <MUIDataTable
             title={"Employee List"}
@@ -26,3 +26,4 @@ export default function MuiDataTable({ tableHeadings, tableData }) {
         />
     )
 }
+export default MuiDataTable

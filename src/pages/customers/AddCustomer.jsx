@@ -15,10 +15,10 @@ const useStyles = makeStyles((theme) => ({
             padding:5
         },
         '& input': {
-            height: 1,
+            height: 2,
         },
         '& label': {
-            top: -6
+            top: -4
         },
         '& .MuiFormControl-root ':{
             margin:'2px 5px'
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
         },
         '& fieldset':{
             '& fieldset': {
-                height: 30,
+                height: 35,
                 top:-3,
                 borderColor:"#e0e0e0"
             }
