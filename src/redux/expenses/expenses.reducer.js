@@ -1,4 +1,4 @@
-import { ADD_EXPENSES, REMOVE_EXPENSES } from './expenses.types'
+import { GET_EXPENSES, REMOVE_EXPENSES } from './expenses.types'
 
 const INITIAL_STATE = {
     expenses: []
@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 
 const ExpensesReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case ADD_EXPENSES:
+        case GET_EXPENSES:
             return {
                 ...state,
                 expenses: action.payload,

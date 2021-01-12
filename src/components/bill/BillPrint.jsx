@@ -37,7 +37,7 @@ const useStyles = makeStyles({
 let componentRef;
 
 
-function BillPrint() {
+function BillPrint({salesList,discount,subTotal,otherCharges,total}) {
     const classes = useStyles();
 
     return (
@@ -75,59 +75,33 @@ function BillPrint() {
                             </Grid>
                         </Grid>
                         <Grid item container className={classes.billBody}>
-                            <Grid item container>
-                                <Grid item xs={6}>
-                                    <Typography variant='body2'>Wai Wai instant noodles</Typography>
+                            {salesList.map(item=>
+                                <Grid item container>
+                                    <Grid item xs={6}>
+                                        <Typography variant='body2'>{item.name}</Typography>
+                                    </Grid>
+                                    <Grid item xs={3}>
+                                        <Typography variant='body2' align={'center'}> {item.quantity} </Typography>
+                                    </Grid>
+                                    <Grid item xs={3}>
+                                        <Typography variant='body2' align='center'>{item.quantity*item.rate}</Typography>
+                                    </Grid>
                                 </Grid>
-                                <Grid item xs={3}>
-                                    <Typography variant='body2' align={'center'}> 1 </Typography>
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <Typography variant='body2' align='center'>20</Typography>
-                                </Grid>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Divider/>
-                            </Grid>
-                            <Grid item container className={classes.billBody}>
-                                <Grid item xs={6}>
-                                    <Typography variant='body2'>Current Chow min</Typography>
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <Typography variant='body2' align='center'> 1 </Typography>
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <Typography variant='body2' align='center'>50</Typography>
-                                </Grid>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Divider/>
-                            </Grid>
-                            <Grid item container className={classes.billBody}>
-                                <Grid item xs={6}>
-                                    <Typography variant='body2'>Suddha Dairy Milk</Typography>
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <Typography variant='body2' align='center'> 10 </Typography>
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <Typography variant='body2' align='center'>500</Typography>
-                                </Grid>
-                            </Grid>
+                            )}
                         </Grid>
                         <Grid item container style={{backgroundColor:'#eaeaea', fontSize:'0.7rem', fontWeight:'600'}}>
                             <Grid item xs={6}/>
                             <Grid item xs={3}>
-                                Tax<br/>
+                                Sub Total<br/>
                                 Services<br/>
                                 Discount<br/>
                                 Total<br/>
                             </Grid>
                             <Grid item xs={3} style={{textAlign:'right'}}>
-                                570.00<br/>
-                                10.00<br/>
-                                57.00<br/>
-                                523.00<br/>
+                                {subTotal}<br/>
+                                {otherCharges}<br/>
+                                {discount}<br/>
+                                {total}<br/>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -143,7 +117,6 @@ function BillPrint() {
                         variant="contained"
                         style={{backgroundColor: '#5087c9', width: '100%', fontSize: '0.8rem', color:'white'}}
                         startIcon={<PrintIcon/>}
-
                     >
                         Print Bill
                     </Button>}

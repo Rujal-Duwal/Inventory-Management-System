@@ -1,0 +1,2 @@
+export const ADD_POS_SALES_lIST='ADD_POS_SALES_lIST'
+export const ADD_POS_SALES_ITEM='ADD_POS_SALES_ITEM'

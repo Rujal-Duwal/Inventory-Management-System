@@ -1,22 +1,189 @@
 {
-  "product_items": [
+  "products": [
     {
+      "itemCode": "456",
       "id": 1,
-      "name": "yolk",
-      "unitPrice": 15,
+      "name": "Mineral Water",
+      "costPrice": 25,
+      "sellingPrice": "200",
       "quantity": 4,
       "brand": "Nepal Ice Cream",
       "category": "food",
-      "exp_date": "2020/12/4"
+      "expDate": "2021/12/4"
+    },
+    {
+      "id": 1,
+      "itemCode": "1",
+      "name": "Rio",
+      "costPrice": 25,
+      "sellingPrice": 600,
+      "quantity": 4,
+      "brand": "Nepal Ice Cream",
+      "category": "food",
+      "expDate": "2021/12/4"
     },
     {
       "id": 2,
+      "itemCode": "2",
       "name": "chicken",
-      "unitPrice": 15,
+      "costPrice": 15,
+      "sellingPrice": 210,
+      "quantity": 3,
+      "brand": "Nepal Ice Cream",
+      "category": "food",
+      "expDate": "2020/12/29"
+    },
+    {
+      "id": 3,
+      "itemCode": "4564",
+      "name": "Guitar",
+      "costPrice": 15,
+      "sellingPrice": 2300,
+      "quantity": 4,
+      "brand": "Kids Toys",
+      "category": "Toys",
+      "expDate": "2021/4/3"
+    },
+    {
+      "id": 4,
+      "itemCode": "45656",
+      "name": "Tomato",
+      "costPrice": 20,
+      "sellingPrice": 80,
+      "quantity": 4,
+      "brand": "Nepal tarkari bhandar",
+      "category": "tarkari",
+      "expDate": "2020/12/29"
+    },
+    {
+      "id": 5,
+      "itemCode": "5646845",
+      "name": "chicken Wings",
+      "costPrice": 20,
+      "sellingPrice": "60",
       "quantity": 4,
       "brand": "Nepal Ice Cream",
       "category": "food",
-      "exp_date": "2020/12/4"
+      "expDate": "2020/12/29"
+    },
+    {
+      "itemCode": "487486341",
+      "name": "Wai Wai instant Noodles",
+      "localName": "",
+      "category": "wai wai",
+      "brand": "CG",
+      "marketPrice": "10",
+      "minStockLimit": "10",
+      "quantity": "10",
+      "mfdDate": "",
+      "expDate": "",
+      "costPrice": "10",
+      "boxCostPrice": "100",
+      "sellingPrice": 11,
+      "boxSellingPrice": "120",
+      "VATorPANNumber": "185941654186",
+      "description": "This is description",
+      "id": 7
+    },
+    {
+      "itemCode": "4564656",
+      "name": "Coke",
+      "quantity": "10",
+      "localName": "",
+      "category": "wai wai",
+      "brand": "Brand",
+      "minStockLimit": "10",
+      "mfdDate": "2021-01-24",
+      "expDate": "2021-01-24",
+      "costPrice": "50",
+      "boxCostPrice": "01",
+      "marketPrice": "10",
+      "boxMarketPrice": "10",
+      "sellingPrice": 60,
+      "boxSellingPrice": "10",
+      "VATorPANNumber": "10",
+      "description": "dsa\n\n",
+      "id": 11
+    },
+    {
+      "itemCode": "8978960",
+      "name": "Sprite",
+      "quantity": "10",
+      "localName": "",
+      "category": "Cold Drinks",
+      "brand": "Brand",
+      "minStockLimit": "10",
+      "mfdDate": "2021-01-24",
+      "expDate": "2021-01-24",
+      "costPrice": "45",
+      "boxCostPrice": "01",
+      "marketPrice": "10",
+      "boxMarketPrice": "10",
+      "sellingPrice": 60,
+      "boxSellingPrice": "10",
+      "VATorPANNumber": "10",
+      "description": "dsa\n\n",
+      "id": 11
+    },
+    {
+      "itemCode": "9877897",
+      "name": "Real",
+      "quantity": "10",
+      "localName": "",
+      "category": "Cold Drinks",
+      "brand": "Brand",
+      "minStockLimit": "10",
+      "mfdDate": "2021-01-24",
+      "expDate": "2021-01-24",
+      "costPrice": "25",
+      "boxCostPrice": "01",
+      "marketPrice": "10",
+      "boxMarketPrice": "10",
+      "sellingPrice": 60,
+      "boxSellingPrice": "10",
+      "VATorPANNumber": "10",
+      "description": "dsa\n\n",
+      "id": 11
+    },
+    {
+      "itemCode": "1236496",
+      "name": "Coffee",
+      "quantity": "10",
+      "localName": "",
+      "category": "Cold Drinks",
+      "brand": "Brand",
+      "minStockLimit": "10",
+      "mfdDate": "2021-01-24",
+      "expDate": "2021-01-24",
+      "costPrice": "25",
+      "boxCostPrice": "01",
+      "marketPrice": "10",
+      "boxMarketPrice": "10",
+      "sellingPrice": 60,
+      "boxSellingPrice": "10",
+      "VATorPANNumber": "10",
+      "description": "dsa\n\n",
+      "id": 11
+    },
+    {
+      "itemCode": "897864",
+      "name": "Wine",
+      "quantity": "10",
+      "localName": "",
+      "category": "Hard Drinks",
+      "brand": "Brand",
+      "minStockLimit": "10",
+      "mfdDate": "2021-01-24",
+      "expDate": "2021-01-24",
+      "costPrice": "900",
+      "boxCostPrice": "01",
+      "marketPrice": "10",
+      "boxMarketPrice": "10",
+      "sellingPrice": 60,
+      "boxSellingPrice": "10",
+      "VATorPANNumber": "10",
+      "description": "dsa\n\n",
+      "id": 11
     }
   ],
   "expenses": [
@@ -25,7 +192,7 @@
       "category": "Salery",
       "cost": 10,
       "date": "2020/11/13",
-      "amount": 20,
+      "totalAmount": 20,
       "bill_number": 3214,
       "details": "further more detail"
     },
@@ -34,7 +201,7 @@
       "category": "Salery",
       "cost": 10,
       "date": "2020/11/13",
-      "amount": 20,
+      "totalAmount": 20,
       "bill_number": 3214,
       "details": "further more detail"
     },
@@ -43,9 +210,16 @@
       "category": "Salery",
       "cost": 10,
       "date": "2020/11/13",
-      "amount": 20,
+      "totalAmount": 20,
       "bill_number": 3214,
       "details": "further more detail"
+    },
+    {
+      "category": "Rent",
+      "cost": "1500",
+      "date": "2021-06-24",
+      "totalAmount": "100,000",
+      "id": 4
     }
   ],
   "suppliers": [
@@ -106,28 +280,8 @@
       "id": 9
     },
     {
-      "companyName": "Namaste Digital Nepal2",
-      "phoneNumber": "9861488000",
-      "mobileNumber": "",
-      "address": "Bhaktapur",
-      "email": "czar69@live.com",
-      "additionalInformation": "",
-      "supplierCode": "",
-      "category": "",
-      "VATorPANNumber": "",
-      "owner": {
-        "phoneNumber": "",
-        "name": "",
-        "mobileNumber": "",
-        "address": "",
-        "email": ""
-      },
-      "id": 11
-    },
-    {
       "companyName": "Namaste Digital Nepal",
-      "phoneNumber": "9861488000",
-      "mobileNumber": "",
+      "mobileNumber": "9861488000",
       "address": "Bhaktapur",
       "email": "czar69@live.com",
       "additionalInformation": "",
@@ -136,16 +290,11 @@
       "VATorPANNumber": "",
       "owner": {
         "phoneNumber": "",
-        "name": "",
-        "mobileNumber": "",
-        "address": "",
-        "email": ""
+        "name": "Amir",
+        "contactNumber": "9861488000",
+        "address": "Bhaktapur",
+        "email": "czar69@live.com"
       },
-      "ownerName": "Amir",
-      "ownerPhoneNumber": "9861488000",
-      "ownerMobileNumber": "9861488000",
-      "ownerAddress": "Bhaktapur",
-      "ownerEmail": "czar69@live.com",
       "id": 13
     },
     {
@@ -166,9 +315,58 @@
         "email": "5432"
       },
       "id": 16
+    },
+    {
+      "companyName": "Hamro Sanshar",
+      "contactNumber": "015454915",
+      "address": "Kathmandu",
+      "email": "a@b.com",
+      "additionalInformation": "na dine",
+      "supplierCode": "456464",
+      "category": "Samaj Sewa",
+      "VATorPANNumber": "",
+      "credit": "9,00,000",
+      "owner": {
+        "contactNumber": "98456456",
+        "name": "Hari Bansa Aacharaye",
+        "address": "hamro Gaun",
+        "email": "hari@bansa.com"
+      },
+      "vatNumber": "19854641",
+      "id": 17
     }
   ],
   "customers": [
+    {
+      "name": "Chunnu Munnu kirana Pasal",
+      "contactNumber": "9861488000",
+      "address": "Bhaktapur",
+      "retailerCode": "",
+      "category": "Retailer",
+      "VATorPANNumber": "",
+      "owner": {
+        "name": "Leela Dhoj Lama",
+        "contactNumber": "",
+        "address": "",
+        "email": ""
+      },
+      "id": 1
+    },
+    {
+      "name": "Pharista sangralaya",
+      "contactNumber": "9861488000",
+      "address": "Bhaktapur",
+      "retailerCode": "",
+      "category": "Museum",
+      "VATorPANNumber": "",
+      "owner": {
+        "name": "Dipjyol Rajbhandari",
+        "contactNumber": "",
+        "address": "",
+        "email": ""
+      },
+      "id": 2
+    },
     {
       "name": "Rujal Duwal",
       "contactNumber": "9861488000",
@@ -177,27 +375,79 @@
       "category": "",
       "VATorPANNumber": "",
       "owner": {
-        "name": "",
-        "contactNumber": "",
-        "address": "",
-        "email": ""
+        "name": "Rujal Duwal",
+        "contactNumber": "9861488000",
+        "address": "Bhaktapur",
+        "email": "czar69@live.com"
       },
-      "id": 1
+      "id": 3
     },
     {
-      "name": "Rujal Duwal",
-      "contactNumber": "9861488000",
-      "address": "Bhaktapur",
-      "retailerCode": "",
-      "category": "Great",
-      "VATorPANNumber": "",
+      "name": "Ghini Ghini Madal Supplier",
+      "contactNumber": "987989749",
+      "address": "dsafdsa",
+      "retailerCode": "101",
+      "category": "Music",
+      "VATorPANNumber": "527489649",
+      "credit": "2397801",
       "owner": {
-        "name": "",
-        "contactNumber": "",
-        "address": "",
-        "email": ""
+        "name": "Hari Gopal Sadha",
+        "contactNumber": "9845641",
+        "address": "BHaktapur",
+        "email": "a@b.com"
       },
-      "id": 2
+      "id": 4
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Leela Dhoj Lama",
+      "designation": "CEO",
+      "contactDetails": "9823618009",
+      "username": "buddha",
+      "createdOn": "1993/4/5"
+    },
+    {
+      "id": 2,
+      "name": "Mahesh Prajapati",
+      "designation": "CTO",
+      "contactDetails": "9860749777",
+      "username": "mahesh",
+      "createdOn": "1986/4/5"
+    },
+    {
+      "id": 3,
+      "name": "Dipjyol Rajbhandari",
+      "designation": "hishab ra pishab clear xa",
+      "contactDetails": "9843453696",
+      "username": "djsantosh",
+      "createdOn": "1993/4/5"
+    },
+    {
+      "id": 4,
+      "name": "Aamir Adhikari",
+      "designation": "COO",
+      "contactDetails": "9823618009",
+      "username": "la thik xa",
+      "createdOn": "1993/4/5"
+    },
+    {
+      "id": 5,
+      "name": "Rujal Duwal",
+      "designation": "CMO",
+      "contactDetails": "9861488000",
+      "username": "rujal",
+      "createdOn": "1993/4/5"
+    },
+    {
+      "name": "Hekkku THenk",
+      "username": "guest",
+      "designation": "Guest",
+      "contactDetails": "98150158",
+      "password": "dfsafdsa",
+      "createdOn": "2020/12/24",
+      "id": 6
     }
   ]
 }

@@ -6,10 +6,12 @@ import {Print,CloudDownload} from '@material-ui/icons';
 import MUIDataTable from "mui-datatables";
 import PropTypes from 'prop-types';
 import ReactToPrint from "react-to-print";
+import {Link} from "react-router-dom"
 
 import { getProducts } from '../../redux/products/products.action'
 import { productsSelector } from '../../redux/products/products.selectors'
 import {useStyles,overRidesMuiTheme} from "../../styles/DataTable.styles"
+import FilterIcon from "../../svg/FilterIcon.svg";
 
 
 /**
@@ -24,6 +26,7 @@ function Products() {
     const getMuiTheme=overRidesMuiTheme()
     const [searchValue,setSearchValue]=useState()
     const dispatch = useDispatch()
+
     useEffect(() => { dispatch(getProducts()) }, [dispatch])
     const products = useSelector(productsSelector)
 
@@ -84,11 +87,11 @@ function Products() {
             }
         },
         {
-            name: "unitPrice",
+            name: "costPrice",
             label: "MRP",
             options: {
                 customBodyRenderLite: (dataIndex) =>
-                    <div style={{colo: 'red'}}>{products[dataIndex].unitPrice}</div>
+                    <div style={{colo: 'red'}}>{products[dataIndex].costPrice}</div>
             }
         },
         {
@@ -110,7 +113,7 @@ function Products() {
                     const distance = countDownDate - now;
                     const days=Math.floor(distance/(1000*60*60*24))
                     /**/
-                   return( <div>
+                    return( <div>
                         <span>
                             <Chip
                                 avatar={
@@ -131,10 +134,10 @@ function Products() {
                                     height: "14px"
                                 }}/>
                                </span>
-                        <br/>
-                        {products[dataIndex].expDate}
-                    </div>
-                   )
+                            <br/>
+                            {products[dataIndex].expDate}
+                        </div>
+                    )
                 }
             }
         },
@@ -143,7 +146,7 @@ function Products() {
             label: "Stock Value",
             options: {
                 customBodyRenderLite: (dataIndex) =>
-                    <div><span>Rs.{products[dataIndex].unitPrice * products[dataIndex].quantity}</span><br/></div>
+                    <div><span>Rs.{products[dataIndex].costPrice * products[dataIndex].quantity}</span><br/></div>
             }
         },
     ]
@@ -157,21 +160,21 @@ function Products() {
         responsive:"standard",
         // filter:false,
         viewColumns:true,
-        customToolbar:({displayData})=>{
+        customToolbar:()=>{
             return(
                 <span>
                 <Button style={{backgroundColor:"#E8E8E8", color:"#656565"}} variant="contained" disableElevation>
                     Import
                 </Button>
-                <Button
-                    style={{backgroundColor:"#3D73FF", color:"white"}}
-                    color='primary'
-                    href="add-products"
-                    variant="contained"
-                    boxShadow={3}
-                >
+                    <Button
+                        style={{backgroundColor:"#3D73FF", color:"white"}}
+                        color='primary'
+                        component={Link}
+                        to="add-products"
+                        variant="contained"
+                        boxShadow={3}
+                    >
                     Add Product
-
                 </Button>
             </span>
             )
@@ -183,7 +186,6 @@ function Products() {
         customSearch: (searchQuery, currentRow, _) => {
             let isFound = false;
             currentRow.forEach(col => {
-
                 if(col !== undefined){
                     if (modifyStringForSearch(col.toString()).includes(modifyStringForSearch(searchQuery))) {
                         isFound = true;
@@ -200,7 +202,7 @@ function Products() {
     const filterBox=()=>
         <div className="search">
             <div className="searchIcon">
-
+                <FilterIcon/>
             </div>
             <InputBase
                 placeholder="Filter…"
@@ -213,8 +215,8 @@ function Products() {
                 onChange={
                     /**
                      *  @param {object} e
-                      */
-                    (e)=>setSearchValue(e.target.value)}
+                     */
+                        (e)=>setSearchValue(e.target.value)}
             />
         </div>
 
@@ -255,7 +257,7 @@ function Products() {
                     onClick={()=>document.querySelector('button[title="Download CSV"]').click()}
                 >
                     <CloudDownload/>
-                  Download
+                    Download
                 </Button>
             </div>
         </div>

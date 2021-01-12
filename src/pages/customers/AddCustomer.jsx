@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import {addCustomer} from "../../redux/customers/customers.action";
 
 import './addCustomer.styles.scss'
+import {Link} from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -137,13 +138,50 @@ export default function AddCustomer() {
             <Paper>
                 <fieldset style={{borderColor: '#ffffff4f'}}>
                     <legend>Owner</legend>
-                    <TextField label="Owner Name" id="name" variant="outlined" fullWidth onChange={handleInputChangeInOwner}/>
-                    <TextField label="Contact Number" id="contactNumber" variant="outlined" onChange={handleInputChangeInOwner}/>
-                    <TextField label="Address" id="address" variant="outlined" fullWidth onChange={handleInputChangeInOwner}/>
-                    <TextField label="Email" id="email" variant="outlined" onChange={handleInputChangeInOwner}/>
+                    <TextField
+                        label="Owner Name"
+                        id="name"
+                        variant="outlined"
+                        fullWidth
+                        onChange={handleInputChangeInOwner}
+                    />
+                    <TextField
+                        label="Contact Number"
+                        id="contactNumber"
+                        variant="outlined"
+                        onChange={handleInputChangeInOwner}
+                    />
+                    <TextField
+                        label="Address"
+                        id="address"
+                        variant="outlined"
+                        fullWidth onChange={handleInputChangeInOwner}
+                    />
+                    <TextField
+                        label="Email"
+                        id="email"
+                        variant="outlined"
+                        onChange={handleInputChangeInOwner}
+                    />
                 </fieldset>
-                <Box display="flex"  style={{margin:'5px 20px'}}>
-                    <Button color='primary' variant="contained" onClick={()=>submitAddCustomer(values)}>Submit</Button>
+                <Box   style={{margin:'5px 20px', textAlign:'right'}}>
+                    <Button
+                        variant="outlined"
+                        component={Link}
+                        to="customers"
+                        style={{color:"#eb6060", borderColor:"#c64c4c",borderRadius:"0", margin:"10px"}}
+                    >
+                        Cancel
+                    </Button>
+                    <Button
+                        color='primary'
+                        component={Link}
+                        to="customers"
+                        variant="contained"
+                        onClick={()=>submitAddCustomer(values)}
+                        style={{backgroundColor:'#3D73FF', borderRadius:"0", color:'white' }}>
+                        Submit
+                    </Button>
                 </Box>
             </Paper>
         </div>

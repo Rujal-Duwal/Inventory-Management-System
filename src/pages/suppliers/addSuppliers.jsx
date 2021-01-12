@@ -1,45 +1,99 @@
 import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import { FormControl, InputLabel, Input, Toolbar, Button, Box,Paper } from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
+import {Toolbar, Paper, Typography, Container, TextField, Box, Button} from '@material-ui/core';
 import { useDispatch } from 'react-redux'
+import {Link} from "react-router-dom"
+import PropTypes from 'prop-types';
 
 import {addSuppliers} from "../../redux/suppliers/suppliers.action";
 
 
+AddSuppliers.propTypes = {
+    vatNumber:PropTypes.string,
+    mobileNumber:PropTypes.number
+};
+
 const useStyles = makeStyles((theme) => ({
-    root: {
-        width:'95%',
-        padding:10,
-        '& > *': {
-            margin: theme.spacing(1),
+    addSuppliers:{
+        '& .MuiToolbar-regular':{
+            minHeight:44,
+            backgroundColor:'#E4ECFF',
+            marginTop:10
         },
+        //style for shrinking text field
+        '& input': {
+            height: 1,
+        },
+        '& label': {
+            top: -9
+        },
+
+        //style for paper
+        '& .MuiPaper-root':{
+            margin:"15px 0px",
+        },
+        '& .MuiButton-contained':{
+            margin:10,
+            background:"#3D73FF",
+            color:"white"
+        }
     },
+    /*style for dateInput*/
+    textField: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        width: 200,
+        '& input':{
+            fontSize:"14px",
+            color:"#020202a1"
+        }
+    },
+    /**/
+    suppliers :{
+        paddingTop: 10,
+        '& .MuiFormControl-root':{
+            margin:10
+        }
+    },
+
+    supplierMetaData:{
+        padding: "12px 10px 0px 10px",
+        '& .MuiFormControl-root':{
+            margin:10,
+            width: '200px'
+        }
+    },
+    owner:{
+        padding:"10px 10px 5px 10px",
+        '& .MuiFormControl-root':{
+            margin:10
+        }
+    }
 }));
 
 const initialFValues = {
     companyName: '',
-    phoneNumber: '',
-    mobileNumber: '',
+    contactNumber: '',
     address: '',
     email: '',
     additionalInformation: '',
     supplierCode: '',
     category: '',
     VATorPANNumber: '',
+    credit:"0",
     owner:{
-        phoneNumber: '',
+        contactNumber: '',
         name: '',
-        mobileNumber: '',
         address: '',
         email: '',
     }
 }
 
+
 export default function AddSuppliers() {
     const classes = useStyles();
     const [values, setValues] = useState(initialFValues)
     const dispatch = useDispatch()
-
     const submitAddSupplier=(values) =>{
         dispatch(addSuppliers(values))
     }
@@ -64,73 +118,131 @@ export default function AddSuppliers() {
         })
     }
 
-
     return (
-        <div className='addSuppliers'>
+        <div className={classes.addSuppliers}>
+            <Typography style={{color:"#000047"}} variant="h6">
+                Add Supplier
+            </Typography>
             <Paper>
-                <form className={classes.root}>
-                    <FormControl fullWidth className={classes.margin}>
-                        <InputLabel htmlFor="companyName">Company Name</InputLabel>
-                        <Input id="companyName" onChange={handleInputChange} values={values.companyName} />
-                    </FormControl>
-                    <FormControl className={classes.margin}>
-                        <InputLabel htmlFor="phoneNumber">Phone Number</InputLabel>
-                        <Input onChange={handleInputChange} values={values.phoneNumber} id="phoneNumber" />
-                    </FormControl>
-                    <FormControl className={classes.margin}>
-                        <InputLabel htmlFor="mobileNumber">Mobile Number</InputLabel>
-                        <Input onChange={handleInputChange} values={values.mobileNumber} id="mobileNumber" />
-                    </FormControl>
-                    <FormControl fullWidth className={classes.margin}>
-                        <InputLabel htmlFor="address">Address</InputLabel>
-                        <Input onChange={handleInputChange} values={values.address} id="address" />
-                    </FormControl>
-                    <FormControl fullWidth className={classes.margin}>
-                        <InputLabel htmlFor="email">Email</InputLabel>
-                        <Input onChange={handleInputChange} values={values.email} id="email" />
-                    </FormControl>
-                    <FormControl fullWidth className={classes.margin}>
-                        <InputLabel htmlFor="additionalInformation">Additional Information</InputLabel>
-                        <Input onChange={handleInputChange} values={values.additionalInformation} id="additionalInformation" />
-                    </FormControl>
-                    <Toolbar />
-                    <FormControl className={classes.margin}>
-                        <InputLabel htmlFor="supplierCode">Supplier Code</InputLabel>
-                        <Input onChange={handleInputChange} values={values.supplierCode} id="supplierCode" />
-                    </FormControl>
-                    <FormControl className={classes.margin}>
-                        <InputLabel htmlFor="category">Category</InputLabel>
-                        <Input onChange={handleInputChange} values={values.category} id="category" />
-                    </FormControl>
-                    <FormControl className={classes.margin}>
-                        <InputLabel htmlFor="vatNumber">VAT Number</InputLabel>
-                        <Input onChange={handleInputChange} values={values.VATorPANNumber} id="vatNumber" />
-                    </FormControl>
-                    <Toolbar />
-                    <FormControl fullWidth className={classes.margin}>
-                        <InputLabel htmlFor="ownerName">Owner Name</InputLabel>
-                        <Input onChange={handleInputChangeInOwner} values={values.owner.name} id="name" />
-                    </FormControl>
-                    <FormControl className={classes.margin}>
-                        <InputLabel htmlFor="ownerPhoneNumber">Phone Name</InputLabel>
-                        <Input onChange={handleInputChangeInOwner} values={values.owner.phoneNumber} id="phoneNumber" />
-                    </FormControl>
-                    <FormControl className={classes.margin}>
-                        <InputLabel htmlFor="ownerMobileNumber">Mobile Name</InputLabel>
-                        <Input onChange={handleInputChangeInOwner} values={values.owner.mobileNumber} id="mobileNumber" />
-                    </FormControl>
-                    <FormControl className={classes.margin}>
-                        <InputLabel htmlFor="ownerAddress">Address</InputLabel>
-                        <Input onChange={handleInputChangeInOwner} values={values.owner.address} id="address" />
-                    </FormControl>
-                    <FormControl className={classes.margin}>
-                        <InputLabel htmlFor="ownerEmail">Email</InputLabel>
-                        <Input onChange={handleInputChangeInOwner} values={values.owner.email} id="email" />
-                    </FormControl>
-                    <Box display="flex" justifyContent="flex-end">
-                        <Button href="/suppliers" color='primary' variant="contained" onClick={()=>submitAddSupplier(values)}>Submit</Button>
-                    </Box>
-                </form>
+                <Toolbar>
+                    <Typography style={{color:"#000047"}} >
+                        Owners
+                    </Typography>
+                </Toolbar>
+                <Container className={classes.owner}>
+                    {/*<Grid container spacing={1} className={classes.productMetaData}>*/}
+                    <TextField
+                        label="Name"
+                        value={values.owner.name}
+                        id="name"
+                        variant="outlined"
+                        onChange={handleInputChangeInOwner}
+                    />
+                    <TextField
+                        label="Contact Number"
+                        value={values.owner.contactNumber}
+                        id="contactNumber"
+                        variant="outlined"
+                        onChange={handleInputChangeInOwner}
+                    />
+                    <TextField
+                        label="Address"
+                        value={values.owner.address}
+                        id="address"
+                        variant="outlined"
+                        onChange={handleInputChangeInOwner}
+                    />
+                    <TextField
+                        label="Email"
+                        value={values.owner.email}
+                        id="email"
+                        variant="outlined"
+                        onChange={handleInputChangeInOwner}
+                    />
+                </Container>
+                <Toolbar>
+                    <Typography style={{color:"#000047"}}>
+                        Suppliers Store
+                    </Typography>
+                </Toolbar>
+                <Container className={classes.suppliers}>
+                    <TextField
+                        label="Company Name"
+                        value={values.companyName}
+                        id="companyName"
+                        variant="outlined"
+                        onChange={handleInputChange}
+                    />
+                    <TextField
+                        label="Phone Number"
+                        value={values.contactNumber}
+                        id="contactNumber"
+                        variant="outlined"
+                        onChange={handleInputChange}
+                    />
+                    <TextField
+                        label="Address"
+                        value={values.address}
+                        id="address"
+                        variant="outlined"
+                        onChange={handleInputChange}
+                    />
+                    <TextField
+                        label="Email"
+                        value={values.email}
+                        id="email"
+                        variant="outlined"
+                        onChange={handleInputChange}
+                    />
+                    <TextField
+                        label="Additional Information"
+                        value={values.additionalInformation}
+                        id="additionalInformation"
+                        variant="outlined"
+                        onChange={handleInputChange}
+                    />
+                    <TextField
+                        label="Supplier Code"
+                        value={values.supplierCode}
+                        id="supplierCode"
+                        variant="outlined"
+                        onChange={handleInputChange}
+                    />
+                    <TextField
+                        label="Category"
+                        value={values.category}
+                        id="category"
+                        variant="outlined"
+                        onChange={handleInputChange}
+                    />
+                    <TextField
+                        label="Vat Number"
+                        value={values.vatNumber}
+                        id="vatNumber"
+                        variant="outlined"
+                        onChange={handleInputChange}
+                    />
+                    {/*</Grid>*/}
+                </Container>
+                <Box display="flex" justifyContent="flex-end">
+                    <Button
+                        variant="outlined"
+                        component={Link}
+                        to="suppliers"
+                        style={{color:"#eb6060", borderColor:"#c64c4c",borderRadius:"0", margin:"10px"}}
+                    >
+                        Cancel
+                    </Button>
+                    <Button
+                        component={Link}
+                        to="/suppliers"
+                        variant="contained"
+                        style={{backgroundColor:'#3D73FF', borderRadius:"0", color:'white' }}
+                        onClick={()=>submitAddSupplier(values)}
+                    >
+                        Submit
+                    </Button>
+                </Box>
             </Paper>
         </div>
     )

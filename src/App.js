@@ -5,7 +5,6 @@ import BillPrint from './components/bill/BillPrint';
 import ClippedDrawer from './components/clippedDrawer/ClippedDrawer';
 import Pos from './pages/pos/Pos';
 
-
 function App() {
   return (
     <div className="App">
@@ -25,7 +24,7 @@ function App() {
         <Route exact path="/suppliers">
           <ClippedDrawer body='SUPPLIERS' />
         </Route>
-        <Route exact path="/add-suppliers">
+        <Route exact path="/add-supplier">
           <ClippedDrawer body='ADD_SUPPLIERS' />
         </Route>
         <Route exact path="/products">
@@ -37,13 +36,19 @@ function App() {
         <Route exact path="/expenses">
           <ClippedDrawer body='EXPENSES' />
         </Route>
+        <Route exact path="/add-expense">
+          <ClippedDrawer body='ADD_EXPENSES' />
+        </Route>
         <Route exact path="/users">
           <ClippedDrawer body='USERS' />
+        </Route>
+        <Route exact path="/add-user">
+          <ClippedDrawer body='Add_USER' />
         </Route>
         <Route exact path="/customers">
           <ClippedDrawer body='CUSTOMERS' />
         </Route>
-        <Route exact path="/add-customers">
+        <Route exact path="/add-customer">
           <ClippedDrawer body='ADD_CUSTOMER' />
         </Route>
       </Switch>

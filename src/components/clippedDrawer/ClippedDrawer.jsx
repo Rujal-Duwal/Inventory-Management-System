@@ -25,7 +25,7 @@ import {
     PeopleAltTwoTone,
     Search,
     AccountCircle,
-    PermIdentity
+    PermIdentity, Settings
 } from '@material-ui/icons';
 
 
@@ -40,6 +40,9 @@ import AddSuppliers from '../../pages/suppliers/addSuppliers';
 import Pos from '../../pages/pos/postouch';
 import AddCustomer from "../../pages/customers/AddCustomer";
 import AddProduct from "../../pages/products/AddProduct";
+import {ADD_EXPENSES} from "../../redux/expenses/expenses.types";
+import AddExpense from "../../pages/expenses/addExpense";
+import AddUsers from "../../pages/user/addUsers";
 
 
 const drawerWidth = 240;
@@ -53,9 +56,9 @@ const useStyles = makeStyles((theme) => ({
         '& .MuiToolbar-regular':{
             minHeight:44
         },
-        '& .MuiSvgIcon-root':{
-            color:'beige',
-            marginLeft:'10px'
+        '& .MuiListItemIcon-root':{
+            minWidth:32,
+            color:'white'
         }
     },
     appBar: {
@@ -73,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerContainer: {
         overflow: 'auto',
+        paddingLeft:10
     },
     content: {
         flexGrow: 1,
@@ -184,20 +188,20 @@ function ClippedDrawer({ body, history }) {
                         </List>
                         <Divider />
                         <List>
-                            {['Customers', 'Suppliers', 'Products', 'Expenses', 'Report', 'Users'].map((text, index) => (
+                            {['Customers', 'Suppliers', 'Products', 'Expenses', 'Report', 'Users', 'Settings'].map((text, index) => (
                                 <>
                                     <ListItem button key={text} onClick={() => { history.push(`${text.toLowerCase()}`) }}>
                                         <ListItemIcon>{index % 2 === 0 ? <PeopleAltTwoTone /> : <ShoppingBasketTwoTone />}</ListItemIcon>
                                         <ListItemText primary={text} onClick={()=>handleClick(text)} />
                                     </ListItem>
-                                    <Collapse  in={show===text} timeout="auto" unmountOnExit addEndListener={0}>
-                                        <List component="div" disablePadding>
-                                            <ListItem button className={classes.nested}>
-                                                <ListItemIcon/>
-                                                <ListItemText primary={`Add ${text}`} key={`Add ${text}`} onClick={()=>{history.push(`add-${text.toLowerCase()}`)}}/>
-                                            </ListItem>
-                                        </List>
-                                    </Collapse>
+                                    {/*<Collapse  in={show===text} timeout="auto" unmountOnExit addEndListener={0}>*/}
+                                    {/*    <List component="div" disablePadding>*/}
+                                    {/*        <ListItem button className={classes.nested}>*/}
+                                    {/*            <ListItemIcon/>*/}
+                                    {/*            <ListItemText primary={`Add ${text}`} key={`Add ${text}`} onClick={()=>{history.push(`add-${text.toLowerCase()}`)}}/>*/}
+                                    {/*        </ListItem>*/}
+                                    {/*    </List>*/}
+                                    {/*</Collapse>*/}
                                 </>
                             ))}
                         </List>
@@ -228,8 +232,12 @@ function ClippedDrawer({ body, history }) {
                             return (<AddProduct />)
                         case 'EXPENSES':
                             return (<Expenses />)
+                        case 'ADD_EXPENSES':
+                            return (<AddExpense/>)
                         case 'USERS':
                             return (<Users />)
+                        case 'Add_USER':
+                            return (<AddUsers/>)
                         default:
                             return
                     }
